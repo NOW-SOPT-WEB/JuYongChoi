@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  background-color: greenyellow;
+  font-family: "Pretendard-Bold";
+  z-index: 10;
+}
