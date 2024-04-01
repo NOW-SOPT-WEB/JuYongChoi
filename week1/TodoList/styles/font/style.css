@@ -1,0 +1,14 @@
+.large {
+  font-family: "Pretendard-Bold";
+  font-size: 42px;
+}
+
+.medium {
+  font-family: "Pretendard-Medium";
+  font-size: 36px;
+}
+
+.small {
+  font-family: "Pretendard-Regular";
+  font-size: 21px;
+}

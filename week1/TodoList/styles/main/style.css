@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  gap: 180px;
+}
+
+.main section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.main section div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
