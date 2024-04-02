@@ -2,6 +2,8 @@
 @import url("../styles/input/style.css");
 @import url("../styles/main/style.css");
 @import url("../styles/button/style.css");
+@import url("../styles/ellipsis/style.css");
+@import url("../styles/common/style.css");
 
 @font-face {
   font-family: "Pretendard-Regular";
