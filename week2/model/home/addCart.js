@@ -1,6 +1,6 @@
 const item = document.querySelectorAll(".card");
 
-function handleAddCart(e) {
+function handleAddCart(e, category, imgUrl) {
   const ok = confirm("장바구니에 추가하시겠습니까 ?"); // confirm 텍스트 보여주기
 
   if (!ok) return;
@@ -32,11 +32,15 @@ function handleAddCart(e) {
     id: count + 1,
     title: title.innerText,
     value: convertedValue,
+    category,
+    imgUrl,
   });
 
   localStorage.setItem("list", JSON.stringify(list));
 }
 
 item.forEach((card) => {
-  card.addEventListener("click", (e) => handleAddCart(e));
+  const category = card.classList[1];
+  const img = card.children[0].getAttribute("src");
+  card.addEventListener("click", (e) => handleAddCart(e, category, img));
 });
