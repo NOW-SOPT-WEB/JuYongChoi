@@ -10,3 +10,11 @@
   font-family: "Pretendard-Bold";
   z-index: 10;
 }
+
+#open-modal {
+  cursor: pointer;
+}
+
+#main_logo {
+  cursor: pointer;
+}
