@@ -1,14 +1,20 @@
 const list = JSON.parse(localStorage.getItem("list"));
+const checkList = JSON.parse(localStorage.getItem("checkList"));
+
 const table = document.querySelector(".cart_table");
 
 list.forEach((item) => {
   const { id, title, value, category, imgUrl } = item;
 
   const tr = document.createElement("tr");
+  tr.setAttribute("id", id);
 
   const checkBoxTd = document.createElement("td");
   const checkBox = document.createElement("input");
-  checkBox.classList.add("item_check");
+
+  if (checkList.some((item) => item.id === +id)) checkBox.checked = true; // check가 되어있던 item이면 checked 상태로
+
+  checkBox.classList.add("check_item");
   checkBox.type = "checkbox";
   checkBoxTd.appendChild(checkBox);
 
