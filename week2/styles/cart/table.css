@@ -26,11 +26,3 @@
   height: 50px;
   object-fit: cover;
 }
-
-.cart_table button {
-  cursor: pointer;
-  background-color: transparent;
-  padding: 4px 8px;
-  border: 1px solid darkgray;
-  border-radius: 8px;
-}
