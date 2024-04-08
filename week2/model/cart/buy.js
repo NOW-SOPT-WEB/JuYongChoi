@@ -11,10 +11,10 @@ const totalAmount = document.getElementById("total_amount");
 function handleBuyBtnClick() {
   modal.style.display = "flex";
 
-  // const checkList = JSON.parse(localStorage.getItem("checkList"));
-  const list = JSON.parse(localStorage.getItem("list"));
+  const checkList = JSON.parse(localStorage.getItem("checkList"));
+  // const list = JSON.parse(localStorage.getItem("list"));
 
-  list.forEach((item) => {
+  checkList.forEach((item) => {
     const listItem = document.createElement("li");
     listItem.style.padding = "10px 0px";
 
@@ -39,7 +39,7 @@ function handleBuyBtnClick() {
     modalList.appendChild(listItem);
   });
 
-  const sum = list.reduce(
+  const sum = checkList.reduce(
     (acc, cur) => acc + +cur.value.replaceAll(",", ""),
     0
   );
@@ -53,10 +53,22 @@ function handleExitClick() {
 }
 
 function handleBuyConfirm() {
+  const list = JSON.parse(localStorage.getItem("list"));
+  const checkList = JSON.parse(localStorage.getItem("checkList"));
+
+  const result = list.filter(
+    (item) => !checkList.some((checkItem) => checkItem.id === item.id)
+  );
+
   alert("구매 완료되었습니다 !");
+
+  localStorage.setItem("list", JSON.stringify(result));
+  localStorage.setItem("checkList", JSON.stringify([]));
 
   modal.style.display = "none";
   modalList.innerHTML = "";
+
+  window.location.reload();
 }
 
 buybtn.addEventListener("click", handleBuyBtnClick);
