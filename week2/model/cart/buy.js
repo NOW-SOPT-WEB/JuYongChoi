@@ -1,17 +1,17 @@
 import { formatValue } from "../../utils/format.js";
 
 const buybtn = document.getElementById("buy-btn");
-const buyConfirmBtn = document.getElementById("buy-confirm-btn");
+const buyConfirmBtn = document.getElementById("buy-modal_confirm-btn");
 
 const modal = document.getElementById("buy-modal");
 const modalList = document.querySelector("#buy-modal ul");
-const exitModalBtn = document.getElementById("exit-buy-modal");
+const exitModalBtn = document.getElementById("buy-modal_exit-btn");
 const totalAmount = document.getElementById("total_amount");
 
 function handleBuyBtnClick() {
   modal.style.display = "flex";
 
-  //   const checkList = JSON.parse(localStorage.getItem("checkList"));
+  // const checkList = JSON.parse(localStorage.getItem("checkList"));
   const list = JSON.parse(localStorage.getItem("list"));
 
   list.forEach((item) => {
@@ -19,16 +19,11 @@ function handleBuyBtnClick() {
     listItem.style.padding = "10px 0px";
 
     const itemContainer = document.createElement("div");
-    itemContainer.style.display = "flex";
-    itemContainer.style.justifyContent = "space-between";
-    itemContainer.style.alignItems = "center";
-    itemContainer.style.gap = "20px";
+    itemContainer.classList.add("buy-modal_item-container");
 
     const img = document.createElement("img");
     img.src = item.imgUrl;
-    img.style.width = "50px";
-    img.style.height = "50px";
-    img.style.borderRadius = "20px";
+    img.classList.add("buy-modal_item-img");
 
     const name = document.createElement("span");
     name.innerText = item.title;
@@ -44,7 +39,7 @@ function handleBuyBtnClick() {
     modalList.appendChild(listItem);
   });
 
-  const sum = checkList.reduce(
+  const sum = list.reduce(
     (acc, cur) => acc + +cur.value.replaceAll(",", ""),
     0
   );
@@ -61,6 +56,7 @@ function handleBuyConfirm() {
   alert("구매 완료되었습니다 !");
 
   modal.style.display = "none";
+  modalList.innerHTML = "";
 }
 
 buybtn.addEventListener("click", handleBuyBtnClick);
