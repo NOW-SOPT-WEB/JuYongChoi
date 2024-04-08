@@ -37,6 +37,7 @@ list.forEach((item) => {
   const btn = document.createElement("button");
   btn.innerText = "삭제";
   btn.classList.add(`cart_delete_btn${id}`);
+  btn.classList.add("small-btn");
   btnTd.appendChild(btn);
 
   tr.appendChild(checkBoxTd);
