@@ -8,8 +8,6 @@ function handleAddCart(e, category, imgUrl) {
   const [img, like, title, value] = e.currentTarget.children; // card 요소의 자식 요소 가져오기
   const list = JSON.parse(localStorage.getItem("list")) ?? [];
 
-  const count = list.length;
-
   let convertedValue = "";
 
   const tmp = value.innerText.replace("원", ""); // "원" 제거
@@ -29,7 +27,7 @@ function handleAddCart(e, category, imgUrl) {
   convertedValue = convertedValue.split("").reverse().join(""); // 다시 순서 바꾸고 join
 
   list.push({
-    id: count + 1,
+    id: Date.now(),
     title: title.innerText,
     value: convertedValue,
     category,
