@@ -1,3 +1,5 @@
+import { formatValue } from "../../utils/format.js";
+
 const item = document.querySelectorAll(".card");
 
 function handleAddCart(e, category, imgUrl) {
@@ -12,19 +14,7 @@ function handleAddCart(e, category, imgUrl) {
 
   const tmp = value.innerText.replace("원", ""); // "원" 제거
 
-  tmp
-    .split("")
-    .reverse()
-    .forEach((char, idx) => {
-      // 가격 배열을 거꾸로 순회하며 3번째마다 "," 추가
-      if (idx % 3 === 0 && idx !== 0) {
-        convertedValue += "," + char;
-        return;
-      }
-      convertedValue += char;
-    });
-
-  convertedValue = convertedValue.split("").reverse().join(""); // 다시 순서 바꾸고 join
+  convertedValue = formatValue(tmp);
 
   list.push({
     id: Date.now(),
