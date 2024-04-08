@@ -9,6 +9,7 @@
 @import url("./modal/style.css");
 @import url("./cart/table.css");
 @import url("./cart/main.css");
+@import url("./cart/modal.css");
 
 @font-face {
   font-family: "Pretendard-Regular";
@@ -170,4 +171,12 @@ a {
 * {
   font-family: "Pretendard-Medium";
   font-weight: 400;
+}
+
+.small-btn {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid darkgray;
+  background-color: transparent;
 }
