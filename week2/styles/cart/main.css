@@ -1,0 +1,21 @@
+#buy-btn,
+#home-btn {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid darkgray;
+  background-color: transparent;
+  border-radius: 12px;
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 12px;
+  padding: 20px 0px;
+}
+
+#total_amount {
+  height: 10%;
+  display: flex;
+  align-items: end;
+  font-family: "Pretendard-Bold";
+}
