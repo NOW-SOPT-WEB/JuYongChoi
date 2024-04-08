@@ -9,7 +9,7 @@ function handleDelete(id) {
 }
 
 tableItemBtn.forEach((btn) => {
-  const id = btn.className.at(-1);
+  const id = +btn.className.match(/\d+/);
 
   btn.addEventListener("click", () => handleDelete(id));
 });
