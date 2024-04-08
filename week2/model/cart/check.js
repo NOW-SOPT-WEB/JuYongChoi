@@ -1,12 +1,10 @@
 const checkAllBtn = document.getElementById("check-all-btn");
 const checkboxs = document.querySelectorAll(".cart_table tr");
 
-const storeList = JSON.parse(localStorage.getItem("list"));
-const newCheckkList = [];
-
 function handleAllChecked(e) {
   const checked = e.target.checked;
-  const allCheckBox = document.querySelectorAll(".check_item");
+  const allCheckBox = document.querySelectorAll(".check_item") ?? [];
+  const storeList = JSON.parse(localStorage.getItem("list"));
 
   allCheckBox.forEach((input) => {
     input.checked = checked;
@@ -18,18 +16,18 @@ function handleAllChecked(e) {
 function handleChecked(e, itemId) {
   const checked = e.target.checked;
 
+  const storeList = JSON.parse(localStorage.getItem("list"));
+  const storeCheckList = JSON.parse(localStorage.getItem("checkList")) ?? [];
+
   const checkedItem = storeList.find((item) => item.id === +itemId);
 
   if (checked) {
-    newCheckkList.push(checkedItem);
-    localStorage.setItem("checkList", JSON.stringify(newCheckkList));
+    storeCheckList.push(checkedItem);
   } else {
-    const storeCheckList = JSON.parse(localStorage.getItem("checkList"));
     const idx = storeCheckList.findIndex((item) => item.id === +itemId);
     storeCheckList.splice(idx, 1);
-
-    localStorage.setItem("checkList", JSON.stringify(storeCheckList));
   }
+  localStorage.setItem("checkList", JSON.stringify(storeCheckList));
 }
 
 checkAllBtn.addEventListener("change", (e) => handleAllChecked(e));
