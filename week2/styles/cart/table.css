@@ -1,0 +1,36 @@
+.cart_main {
+  margin: 200px 0px 100px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart_table {
+  width: 70%;
+}
+
+.cart_table td,
+.cart_table th {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+
+.cart_table th {
+  background-color: antiquewhite;
+}
+
+.cart_table .item_img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.cart_table button {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 4px 8px;
+  border: 1px solid darkgray;
+  border-radius: 8px;
+}
