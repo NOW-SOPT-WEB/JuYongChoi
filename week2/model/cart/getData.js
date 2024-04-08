@@ -12,7 +12,7 @@ list.forEach((item) => {
   const checkBoxTd = document.createElement("td");
   const checkBox = document.createElement("input");
 
-  if (checkList.some((item) => item.id === +id)) checkBox.checked = true; // check가 되어있던 item이면 checked 상태로
+  if (checkList?.some((item) => item.id === +id)) checkBox.checked = true; // check가 되어있던 item이면 checked 상태로
 
   checkBox.classList.add("check_item");
   checkBox.type = "checkbox";
