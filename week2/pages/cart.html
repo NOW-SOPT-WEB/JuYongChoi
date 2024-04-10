@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" />
     <title>Document</title>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-    </style>
   </head>
   <body>
     <header class="header">
-      <img id="main_logo" width="30" src="../assets/header/shop.svg" />
+      <img
+        alt="메인 로고"
+        id="main_logo"
+        width="30"
+        src="../assets/header/shop.svg"
+      />
       <h2 class="large">장바구니 페이지</h2>
-      <img id="open-modal" width="30" src="../assets/header/menu.svg" />
+      <img
+        alt="메뉴 이미지"
+        id="open-modal"
+        width="30"
+        src="../assets/header/menu.svg"
+      />
     </header>
     <section id="buy-modal">
       <img
@@ -45,10 +50,15 @@
       </div>
     </main>
     <aside id="modal">
-      <img id="exit-modal" width="30" src="../assets/icons/close.svg" />
+      <img
+        alt="닫힘 버튼 이미지"
+        id="exit-modal"
+        width="30"
+        src="../assets/icons/close.svg"
+      />
       <ul>
         <li class="small">관심상품 보기</li>
-        <li id="cart_text" class="small">장바구니</li>
+        <li id="modal_cart-text" class="small">장바구니</li>
         <li class="small">관리자</li>
       </ul>
     </aside>
@@ -56,10 +66,9 @@
   <script src="../model/home/filter.js" type="module"></script>
   <script src="../model/home/addCart.js" type="module"></script>
   <script src="../model/home/modal.js" type="module"></script>
-  <script src="../model/home/redirect.js" type="module"></script>
   <script src="../model/cart/getData.js" type="module"></script>
   <script src="../model/cart/deleteItem.js" type="module"></script>
   <script src="../model/cart/check.js" type="module"></script>
   <script src="../model/cart/buy.js" type="module"></script>
-  <script src="../model/cart/redirect.js" type="module"></script>
+  <script src="../model/redirect.js" type="module"></script>
 </html>
