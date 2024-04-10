@@ -169,6 +169,8 @@ a {
   color: black;
 }
 * {
+  box-sizing: border-box;
+
   font-family: "Pretendard-Medium";
   font-weight: 400;
 }
