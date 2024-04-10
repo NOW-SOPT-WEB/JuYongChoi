@@ -40,12 +40,7 @@ list.forEach((item) => {
   btn.classList.add("small-btn");
   btnTd.appendChild(btn);
 
-  tr.appendChild(checkBoxTd);
-  tr.appendChild(imgTd);
-  tr.appendChild(titleTd);
-  tr.appendChild(valueTd);
-  tr.appendChild(categoryTd);
-  tr.appendChild(btnTd);
+  tr.append(checkBoxTd, imgTd, titleTd, valueTd, categoryTd, btnTd);
 
   table.appendChild(tr);
 });
