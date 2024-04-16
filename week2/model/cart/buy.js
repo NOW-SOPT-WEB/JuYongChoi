@@ -31,10 +31,7 @@ function handleBuyBtnClick() {
     const value = document.createElement("span");
     value.innerText = item.value + "원";
 
-    itemContainer.appendChild(img);
-    itemContainer.appendChild(name);
-    itemContainer.appendChild(value);
-
+    itemContainer.append(img, name, value);
     listItem.appendChild(itemContainer);
     modalList.appendChild(listItem);
   });
