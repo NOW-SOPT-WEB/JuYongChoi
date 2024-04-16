@@ -7,6 +7,7 @@ function handleAddCart(e, category, imgUrl) {
 
   if (!ok) return;
 
+  const id = e.currentTarget.getAttribute("id");
   const [img, like, title, value] = e.currentTarget.children; // card 요소의 자식 요소 가져오기
   const list = JSON.parse(localStorage.getItem("list")) ?? [];
 
@@ -17,7 +18,7 @@ function handleAddCart(e, category, imgUrl) {
   convertedValue = formatValue(tmp);
 
   list.push({
-    id: Date.now(),
+    id,
     title: title.innerText,
     value: convertedValue,
     category,
