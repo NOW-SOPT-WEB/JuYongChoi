@@ -9,9 +9,10 @@ title.innerText = "전체";
 
 SHOPPING_LIST.forEach((item) => {
   /* 메인 컨텐츠 */
-  const { name, value, category, imgUrl } = item;
+  const { id, name, value, category, imgUrl } = item;
 
   const container = document.createElement("div");
+  container.setAttribute("id", id);
   container.classList.add("card");
   container.classList.add(`${category}`);
 
