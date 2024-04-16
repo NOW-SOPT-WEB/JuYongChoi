@@ -12,6 +12,7 @@ function handleAddCart(e, category, imgUrl) {
   const list = JSON.parse(localStorage.getItem("list")) ?? [];
 
   if (list.some((item) => item.id === id)) {
+    // 이미 장바구니에 있는 item이면 alert 후 리턴
     alert("이미 장바구니에 존재합니다 !");
     return;
   }
