@@ -1,12 +1,23 @@
 .cart_main {
-  margin: 200px 0px 100px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding-top: 180px;
+}
+
+.cart_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 70%;
+  height: 600px;
+  overflow-y: scroll;
 }
 
 .cart_table {
-  width: 70%;
+  width: 90%;
 }
 
 .cart_table td,
