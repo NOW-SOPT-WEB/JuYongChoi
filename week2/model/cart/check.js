@@ -19,12 +19,12 @@ function handleChecked(e, itemId) {
   const storeList = JSON.parse(localStorage.getItem("list"));
   const storeCheckList = JSON.parse(localStorage.getItem("checkList")) ?? [];
 
-  const checkedItem = storeList.find((item) => item.id === +itemId);
+  const checkedItem = storeList.find((item) => item.id === itemId);
 
   if (checked) {
     storeCheckList.push(checkedItem);
   } else {
-    const idx = storeCheckList.findIndex((item) => item.id === +itemId);
+    const idx = storeCheckList.findIndex((item) => item.id === itemId);
     storeCheckList.splice(idx, 1);
   }
   localStorage.setItem("checkList", JSON.stringify(storeCheckList));
