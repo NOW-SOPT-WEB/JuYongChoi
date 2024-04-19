@@ -1,4 +1,5 @@
 import { SHOPPING_LIST } from "./store.js";
+import { handleAddCart } from "./addCart.js";
 
 const listItem = document.querySelectorAll(".nav li");
 const content = document.getElementById("content-box");
@@ -15,6 +16,9 @@ SHOPPING_LIST.forEach((item) => {
   container.setAttribute("id", id);
   container.classList.add("card");
   container.classList.add(`${category}`);
+  container.addEventListener("click", (e) =>
+    handleAddCart(e, category, imgUrl)
+  );
 
   const cardImg = document.createElement("img");
   cardImg.src = imgUrl;
@@ -57,6 +61,9 @@ function handleClickNav(innerText) {
 
     const container = document.createElement("div");
     container.classList.add("card");
+    container.addEventListener("click", (e) =>
+      handleAddCart(e, category, imgUrl)
+    );
 
     const cardImg = document.createElement("img");
     cardImg.src = imgUrl;
