@@ -57,7 +57,7 @@ function handleClickNav(innerText) {
   );
 
   filteredData.forEach((item) => {
-    const { name, value, imgUrl } = item;
+    const { category, name, value, imgUrl } = item;
 
     const container = document.createElement("div");
     container.classList.add("card");
