@@ -1,7 +1,8 @@
+import { GUIDE_MESSAGE } from "../../constants/index.js";
 import { formatValue } from "../../utils/format.js";
 
 export function handleAddCart(e, category, imgUrl) {
-  const ok = confirm("장바구니에 추가하시겠습니까 ?"); // confirm 텍스트 보여주기
+  const ok = confirm(GUIDE_MESSAGE.ADDCART_CONFIRM); // confirm 텍스트 보여주기
 
   if (!ok) return;
 
@@ -11,7 +12,7 @@ export function handleAddCart(e, category, imgUrl) {
 
   if (list.some((item) => item.id === id)) {
     // 이미 장바구니에 있는 item이면 alert 후 리턴
-    alert("이미 장바구니에 존재합니다 !");
+    alert(GUIDE_MESSAGE.ALREADY_EXIST_ALERT);
     return;
   }
 

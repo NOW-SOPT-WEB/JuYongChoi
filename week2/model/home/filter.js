@@ -67,9 +67,11 @@ function handleClickNav(innerText) {
 
     const cardImg = document.createElement("img");
     cardImg.src = imgUrl;
+    cardImg.alt = "상품 카드 이미지";
 
     const likeImg = document.createElement("img");
     likeImg.src = "../assets/icons/like.svg";
+    likeImg.alt = "좋아요 이미지";
     likeImg.width = "30";
 
     const nameText = document.createElement("p");

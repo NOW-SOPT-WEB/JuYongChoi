@@ -1,4 +1,5 @@
 import { formatValue } from "../../utils/format.js";
+import { GUIDE_MESSAGE } from "../../constants/index.js";
 
 const buybtn = document.getElementById("buy-btn");
 const buyConfirmBtn = document.getElementById("buy-modal_confirm-btn");
@@ -23,6 +24,7 @@ function handleBuyBtnClick() {
 
     const img = document.createElement("img");
     img.src = item.imgUrl;
+    img.alt = "상품 이미지";
     img.classList.add("buy-modal_item-img");
 
     const name = document.createElement("span");
@@ -57,7 +59,7 @@ function handleBuyConfirm() {
     (item) => !checkList.some((checkItem) => checkItem.id === item.id)
   );
 
-  alert("구매 완료되었습니다 !");
+  alert(GUIDE_MESSAGE.COMPLETE_BUY_ALERT);
 
   localStorage.setItem("list", JSON.stringify(result));
   localStorage.setItem("checkList", JSON.stringify([]));
