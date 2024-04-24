@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import { LEVEL } from "../constants";
+import { useState } from "react";
 
-export const useMemoryGame = (level) => {
+export const useMemoryGame = () => {
   const [successCount, setSuccessCount] = useState(0);
-  // const list = getRandomList(LEVEL[level.toUpperCase()].QUIZ_COUNT);
   const [isRestarted, setIsRestarted] = useState(false);
 
   const handleCorrect = (count) => {

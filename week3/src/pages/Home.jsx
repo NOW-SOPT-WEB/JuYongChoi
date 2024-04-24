@@ -1,32 +1,34 @@
 import LevelSelector from "../components/main/LevelSelector/LevelSelector";
 import CountBanner from "../components/main/CountBanner/CountBanner";
 import GameZone from "../components/main/GameZone/GameZone";
-import { useLevelInfoState } from "../context/Level";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CompleteModal from "../components/main/CompleteModal/CompleteModal";
 import { useMemoryGame } from "../hooks";
 import { LEVEL } from "../constants";
 
 const Main = () => {
-  const level = useLevelInfoState();
+  const [difficulty, setDifficulty] = useState("easy");
+
   const {
     successCount,
     isRestarted,
     handleCorrect,
     handleReset,
     handleRestart,
-  } = useMemoryGame(level);
-  const isDone = successCount === LEVEL[level.toUpperCase()].QUIZ_COUNT;
+  } = useMemoryGame(difficulty);
+
+  const isDone = successCount === LEVEL[difficulty.toUpperCase()].QUIZ_COUNT;
 
   useEffect(() => {
     handleReset();
-  }, [level]);
+  }, [difficulty]);
 
   return (
     <main>
-      <CountBanner currentCount={successCount} level={level} />
-      <LevelSelector level={level} />
+      <CountBanner currentCount={successCount} level={difficulty} />
+      <LevelSelector onChange={setDifficulty} level={difficulty} />
       <GameZone
+        level={difficulty}
         onCorrect={handleCorrect}
         isRestarted={isRestarted}
         onRestart={handleRestart}

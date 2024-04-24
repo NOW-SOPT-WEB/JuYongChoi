@@ -3,12 +3,12 @@ import Card from "../../common/Card/Card";
 import { cardWrapperStyle } from "./GameZone.style";
 import { useCardList } from "../../../hooks/useCardList";
 
-const GameZone = ({ onCorrect, isRestarted, onRestart }) => {
+const GameZone = ({ level, onCorrect, isRestarted, onRestart }) => {
   const {
     cardState: data,
     setCardState: mutate,
     handleCardClick,
-  } = useCardList();
+  } = useCardList(level);
 
   useEffect(() => {
     handleCheckMatch();
