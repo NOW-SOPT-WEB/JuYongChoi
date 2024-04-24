@@ -1,35 +1,33 @@
 import { LEVEL } from "../../../constants";
-import { useLevelInfoDispatch } from "../../../context/Level";
 import Button from "../../common/Button/Button";
 import { sectionStyle } from "./LevelSelector.style";
 
-const LevelSelector = ({ level, ...props }) => {
-  const setLevel = useLevelInfoDispatch();
+const LevelSelector = ({ onChange, level, ...props }) => {
   return (
     <section css={sectionStyle} {...props}>
       <Button
-        onClick={() => setLevel(LEVEL.EASY.TEXT)}
+        onClick={() => onChange(LEVEL.EASY.TEXT)}
         isSelected={level === LEVEL.EASY.TEXT}
         variant="primary"
         size="medium"
       >
-        Easy
+        {LEVEL.EASY.TEXT.toUpperCase()}
       </Button>
       <Button
-        onClick={() => setLevel(LEVEL.NORMAL.TEXT)}
+        onClick={() => onChange(LEVEL.NORMAL.TEXT)}
         isSelected={level === LEVEL.NORMAL.TEXT}
         variant="primary"
         size="medium"
       >
-        Normal
+        {LEVEL.NORMAL.TEXT.toUpperCase()}
       </Button>
       <Button
-        onClick={() => setLevel(LEVEL.HARD.TEXT)}
+        onClick={() => onChange(LEVEL.HARD.TEXT)}
         isSelected={level === LEVEL.HARD.TEXT}
         variant="primary"
         size="medium"
       >
-        Hard
+        {LEVEL.HARD.TEXT.toUpperCase()}
       </Button>
     </section>
   );

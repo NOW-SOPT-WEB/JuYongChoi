@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { CARD_FLIPPED_DURATION, LEVEL } from "../constants";
 import { getRandomList } from "../utils/random";
-import { useLevelInfoState } from "../context/Level";
 
-export const useCardList = () => {
-  const level = useLevelInfoState();
+export const useCardList = (level) => {
   const [cardState, setCardState] = useState(
     getRandomList(LEVEL[level.toUpperCase()].QUIZ_COUNT)
   );
@@ -18,13 +16,11 @@ export const useCardList = () => {
   const handleCardClick = (id) => {
     const currentCard = cardState.find((item) => item.id === id); // 현재 클릭된 id의 카드 정보를 가져옴
 
-    // 현재 해당 카드가 뒤집혀져 있는 상태, 매칭된 상태, 혹은 카드 선택 중이라면 return
-    if (currentCard.flipped || currentCard.matched || isSelecting) return;
+    if (currentCard.flipped || currentCard.matched || isSelecting) return; // 현재 해당 카드가 뒤집혀져 있는 상태, 매칭된 상태, 혹은 카드 선택 중이라면 return
 
     const updatedCards = cardState.map((card) => {
-      // 해당 id 카드의 filpped 상태를 true로 만듦
       if (card.id === id) {
-        return { ...card, flipped: true };
+        return { ...card, flipped: true }; // 해당 id 카드의 filpped 상태를 true로 만듦
       }
       return card;
     });
