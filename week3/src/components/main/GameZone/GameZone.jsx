@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../common/Card/Card";
 import { cardWrapperStyle } from "./GameZone.style";
 import { useCardList } from "../../../hooks/useCardList";
@@ -8,17 +8,18 @@ const GameZone = ({ level, onCorrect, isRestarted, onRestart }) => {
     cardState: data,
     setCardState: mutate,
     handleCardClick,
+    matchCnt,
   } = useCardList(level);
 
   useEffect(() => {
-    handleCheckMatch();
-    handleShouldRestart();
-  }, [data, isRestarted]);
-
-  const handleCheckMatch = () => {
-    const matchCnt = Math.floor(data.filter((card) => card.matched).length / 2);
     onCorrect(matchCnt);
-  };
+  }, [data]);
+
+  useEffect(() => {
+    handleShouldRestart();
+  }, [isRestarted]);
+
+  /* isRestarted가 true(다시 시작해야함)면 카드 정보 초기화 + onRestart() */
   const handleShouldRestart = () => {
     if (isRestarted) {
       mutate((prev) =>
