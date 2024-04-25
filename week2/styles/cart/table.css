@@ -1,0 +1,39 @@
+.cart_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 180px;
+}
+
+.cart_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 70%;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.cart_table {
+  width: 90%;
+}
+
+.cart_table td,
+.cart_table th {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+
+.cart_table th {
+  background-color: antiquewhite;
+}
+
+.cart_table .item_img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}

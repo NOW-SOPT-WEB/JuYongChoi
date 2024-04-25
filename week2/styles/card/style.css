@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+.card:hover {
+  animation: 1s linear infinite hoverAni;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card img:nth-child(2) {
+  border-radius: 100%;
+  padding: 3px;
+}
+.card img:nth-child(2):hover {
+  filter: opacity(0.2) drop-shadow(0 0 0 #ff0000);
+}
+
+.card img:first-child {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+@keyframes hoverAni {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.04);
+  }
+  33% {
+    transform: scale(0.96);
+  }
+  66% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

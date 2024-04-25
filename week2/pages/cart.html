@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/card/style.css" />
+    <link rel="stylesheet" href="../styles/cart/main.css" />
+    <link rel="stylesheet" href="../styles/cart/modal.css" />
+    <link rel="stylesheet" href="../styles/cart/table.css" />
+    <link rel="stylesheet" href="../styles/font/style.css" />
+    <link rel="stylesheet" href="../styles/footer/style.css" />
+    <link rel="stylesheet" href="../styles/header/style.css" />
+    <link rel="stylesheet" href="../styles/main/style.css" />
+    <link rel="stylesheet" href="../styles/modal/style.css" />
+    <link rel="stylesheet" href="../styles/nav/style.css" />
+    <link rel="stylesheet" href="../styles/section/style.css" />
+    <link rel="stylesheet" href="../styles/slider/style.css" />
+    <title>주용이의 쇼핑몰</title>
+  </head>
+  <body>
+    <header class="header">
+      <img
+        alt="메인 로고"
+        id="main_logo"
+        width="30"
+        src="../assets/header/shop.svg"
+      />
+      <h2 class="large">장바구니 페이지</h2>
+      <img
+        alt="메뉴 이미지"
+        id="open-modal"
+        width="30"
+        src="../assets/header/menu.svg"
+      />
+    </header>
+    <dialog id="buy-modal">
+      <img
+        id="buy-modal_exit-btn"
+        width="30"
+        src="../assets/icons/close_black.svg"
+      />
+      <ul></ul>
+      <p id="total_amount"></p>
+      <button id="buy-modal_confirm-btn" class="small-btn small">
+        구매하기
+      </button>
+    </dialog>
+    <main class="cart_main">
+      <section class="cart_content">
+        <table class="cart_table">
+          <tr>
+            <th scope="col"><input id="check-all-btn" type="checkbox" /></th>
+            <th scope="col" colspan="2">상품 정보</th>
+            <th scope="col">상품 금액</th>
+            <th scope="col">카테고리</th>
+            <th scope="col">비고</th>
+          </tr>
+        </table>
+      </section>
+      <div class="btn-wrapper">
+        <button id="buy-btn" class="small-btn small">구매하기</button>
+        <button id="home-btn" class="small-btn small">홈으로</button>
+      </div>
+    </main>
+    <aside id="modal">
+      <img
+        alt="닫힘 버튼 이미지"
+        id="exit-modal"
+        width="30"
+        src="../assets/icons/close.svg"
+      />
+      <ul>
+        <li class="small">관심상품 보기</li>
+        <li id="modal_cart-text" class="small">장바구니</li>
+        <li class="small">관리자</li>
+      </ul>
+    </aside>
+  </body>
+  <script src="../model/home/modal.js" type="module"></script>
+  <script src="../model/cart/getData.js" type="module"></script>
+  <script src="../model/cart/deleteItem.js" type="module"></script>
+  <script src="../model/cart/check.js" type="module"></script>
+  <script src="../model/cart/buy.js" type="module"></script>
+  <script src="../model/redirect.js" type="module"></script>
+  <script src="../model/clickesc.js" type="module"></script>
+</html>
