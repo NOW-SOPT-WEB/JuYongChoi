@@ -15,10 +15,6 @@ export const variantStyle = (variant, isSelected) => {
       backgroundColor: isSelected ? Theme.color.pink : Theme.color.blue500,
       color: Theme.color.white,
     }),
-    reset: css({
-      backgroundColor: Theme.color.red200,
-      color: Theme.color.white,
-    }),
   };
   return style[variant];
 };
