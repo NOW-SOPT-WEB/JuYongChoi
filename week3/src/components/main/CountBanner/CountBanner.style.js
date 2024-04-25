@@ -9,6 +9,8 @@ export const bannerStyle = css({
   justifyContent: "center",
   gap: Theme.spacing.spacing5,
 
+  position: "relative",
+
   width: "100%",
   height: "240px",
 
