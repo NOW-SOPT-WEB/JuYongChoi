@@ -8,6 +8,9 @@ export const useCardList = (level) => {
   );
   const [flippedCard, setFlippedCard] = useState([]);
   const [isSelecting, setIsSelecting] = useState(false);
+  const matchCnt = Math.floor(
+    cardState.filter((card) => card.matched).length / 2
+  );
 
   useEffect(() => {
     setCardState(getRandomList(LEVEL[level.toUpperCase()].QUIZ_COUNT));
@@ -31,7 +34,6 @@ export const useCardList = (level) => {
 
     if (flippedCard.length === 1) {
       const firstCard = cardState.find((item) => item.id === flippedCard[0]);
-      console.log(firstCard.cardId, currentCard.cardId);
       if (firstCard.cardId === currentCard.cardId) {
         const updatesCard = cardState.map((card) => {
           if (card.id === flippedCard[0] || card.id === id) {
@@ -57,5 +59,5 @@ export const useCardList = (level) => {
     }
   };
 
-  return { cardState, setCardState, handleCardClick };
+  return { cardState, setCardState, handleCardClick, matchCnt };
 };
