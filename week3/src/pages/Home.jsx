@@ -25,8 +25,12 @@ const Main = () => {
 
   return (
     <main>
-      <CountBanner currentCount={successCount} level={difficulty} />
-      <LevelSelector onChange={setDifficulty} level={difficulty} />
+      <CountBanner
+        onReset={handleRestart}
+        currentCount={successCount}
+        level={difficulty}
+      />
+      <LevelSelector onChangeLevel={setDifficulty} level={difficulty} />
       <GameZone
         level={difficulty}
         onCorrect={handleCorrect}
