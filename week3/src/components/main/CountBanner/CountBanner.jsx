@@ -14,8 +14,8 @@ const CountBanner = ({ onReset, currentCount, level, ...props }) => {
       <Button
         onClick={onReset}
         css={css`
-          position: absolute;
-          bottom: ${Theme.spacing.spacing6};
+          position: fixed;
+          top: 18%;
           right: ${Theme.spacing.spacing6};
         `}
         size="large"
