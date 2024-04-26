@@ -8,9 +8,6 @@ export const useCardList = (level) => {
   );
   const [flippedCard, setFlippedCard] = useState([]);
   const [isSelecting, setIsSelecting] = useState(false);
-  const matchCnt = Math.floor(
-    cardState.filter((card) => card.matched).length / 2
-  );
 
   useEffect(() => {
     setCardState(getRandomList(LEVEL[level.toUpperCase()].QUIZ_COUNT));
@@ -59,5 +56,5 @@ export const useCardList = (level) => {
     }
   };
 
-  return { cardState, setCardState, handleCardClick, matchCnt };
+  return { cardState, setCardState, handleCardClick };
 };
