@@ -1,7 +1,7 @@
 import Card from "../../common/Card/Card";
 import { cardWrapperStyle } from "./GameZone.style";
 
-const GameZone = ({ onFlip, cardList, ...props }) => {
+const GameZone = ({ onCardFlip, cardList, ...props }) => {
   return (
     <section css={cardWrapperStyle} {...props}>
       {cardList.map((card, index) => {
@@ -12,7 +12,7 @@ const GameZone = ({ onFlip, cardList, ...props }) => {
             key={index}
             frontImg={card.img}
             isClicked={cardItem?.flipped || cardItem?.matched}
-            onFlip={() => onFlip(card.id)}
+            onFlip={() => onCardFlip(card.id)}
           />
         );
       })}
