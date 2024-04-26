@@ -1,4 +1,4 @@
-import { IMG_BY_NUM, LEVEL } from "../constants";
+import { CARD_LIST } from "../store/store";
 
 export const getRandomNumber = (count) => {
   const list = [];
@@ -24,13 +24,15 @@ export const getRandomNumber = (count) => {
 
 export const getRandomList = (count) => {
   // 랜덤 수에 맞는 img를 포함한 객체요소를 배열로 갖는 리스트 반환 함수
-  const list = getRandomNumber(count);
+  const numList = getRandomNumber(count);
 
-  return list.map((num, index) => ({
-    id: index + 1,
-    cardId: num,
-    img: IMG_BY_NUM[`img${num}`],
-    flipped: false,
-    matched: false,
-  }));
+  return numList.map((num, idx) => {
+    const card = CARD_LIST.find((card) => card.id === num);
+    console.log(card);
+    return {
+      ...card,
+      id: idx,
+      cardId: num,
+    };
+  });
 };
