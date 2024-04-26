@@ -9,6 +9,7 @@ const LevelSelector = ({ onChangeLevel, level, ...props }) => {
     <section css={sectionStyle} {...props}>
       {LevelArray.map((item) => (
         <Button
+          key={item}
           onClick={() => onChangeLevel(LEVEL[item].TEXT)}
           isSelected={level === LEVEL[item].TEXT}
           variant="primary"
