@@ -6,11 +6,11 @@ import Heading from "../../common/Heading/Heading";
 import { bannerStyle } from "./CountBanner.style";
 import { Theme } from "../../../styles/theme/theme";
 
-const CountBanner = ({ onReset, currentCount, level }) => {
+const CountBanner = ({ onReset, currentCount, level, ...props }) => {
   const maxCount = LEVEL[level.toUpperCase()].QUIZ_COUNT;
 
   return (
-    <section css={bannerStyle}>
+    <section css={bannerStyle} {...props}>
       <Button
         onClick={onReset}
         css={css`

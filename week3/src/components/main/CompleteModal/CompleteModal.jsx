@@ -5,9 +5,8 @@ import Heading from "../../common/Heading/Heading";
 import Modal from "../../common/Modal/Modal";
 import Text from "../../common/Text/Text";
 
-const CompleteModal = ({ isDone, onReset, onRestart }) => {
+const CompleteModal = ({ isDone, onRestart, ...props }) => {
   const handleComplete = () => {
-    onReset();
     close();
     onRestart();
   };
@@ -15,7 +14,7 @@ const CompleteModal = ({ isDone, onReset, onRestart }) => {
   const { close } = useOverlay();
 
   return (
-    <Modal isOpen={isDone} onClose={close}>
+    <Modal isOpen={isDone} onClose={close} {...props}>
       <Heading size="large">{MODAL_TEXT.HEADING}</Heading>
       <Text size="large">{MODAL_TEXT.TEXT}</Text>
       <Button
