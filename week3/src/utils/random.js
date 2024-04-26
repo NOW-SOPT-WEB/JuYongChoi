@@ -1,14 +1,24 @@
-import { IMG_BY_NUM } from "../constants";
+import { IMG_BY_NUM, LEVEL } from "../constants";
 
 export const getRandomNumber = (count) => {
-  // count만큼의 쌍을 포함한 랜덤갯수 구하는 함수
   const list = [];
+  while (list.length < count) {
+    /* 랜덤으로 난이도 별 어떤 이미지 선택할지 번호 뽑기 */
+    const randomNumber = Math.floor(Math.random() * 9 + 1);
+    if (!list.includes(randomNumber)) {
+      list.push(randomNumber);
+    }
+  }
+
   while (list.length < count * 2) {
-    const randomNumber = Math.floor(Math.random() * count + 1);
+    /* 뽑아진 이미지 중, 다시 랜덤으로 1개씩 더 추가하기 */
+    const randomNumber = Math.floor(Math.random() * 9 + 1);
+    if (!list.includes(randomNumber)) continue;
     if (list.filter((num) => num === randomNumber).length < 2) {
       list.push(randomNumber);
     }
   }
+
   return list;
 };
 
