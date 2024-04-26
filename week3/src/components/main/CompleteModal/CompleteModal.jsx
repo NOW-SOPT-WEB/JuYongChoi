@@ -5,16 +5,16 @@ import Heading from "../../common/Heading/Heading";
 import Modal from "../../common/Modal/Modal";
 import Text from "../../common/Text/Text";
 
-const CompleteModal = ({ isDone, onRestart, ...props }) => {
+const CompleteModal = ({ isGameDone, onGameRestart, ...props }) => {
   const handleComplete = () => {
     close();
-    onRestart();
+    onGameRestart();
   };
 
   const { close } = useOverlay();
 
   return (
-    <Modal isOpen={isDone} onClose={close} {...props}>
+    <Modal isOpen={isGameDone} onClose={close} {...props}>
       <Heading size="large">{MODAL_TEXT.HEADING}</Heading>
       <Text size="large">{MODAL_TEXT.TEXT}</Text>
       <Button
