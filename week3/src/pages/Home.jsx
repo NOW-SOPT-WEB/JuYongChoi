@@ -31,8 +31,8 @@ const Main = () => {
         level={difficulty}
       />
       <LevelSelector onChangeLevel={setDifficulty} level={difficulty} />
-      <GameZone onFlip={handleCardClick} cardList={cardState} />
-      <CompleteModal isDone={isDone} onRestart={handleRestarted} />
+      <GameZone onCardFlip={handleCardClick} cardList={cardState} />
+      <CompleteModal isGameDone={isDone} onGameRestart={handleRestarted} />
     </main>
   );
 };
