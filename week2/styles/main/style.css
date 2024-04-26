@@ -1,9 +1,0 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  padding-left: 300px;
-}
-
-.main section {
-  padding-top: 120px;
-}
