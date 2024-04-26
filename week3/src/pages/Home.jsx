@@ -3,45 +3,36 @@ import CountBanner from "../components/main/CountBanner/CountBanner";
 import GameZone from "../components/main/GameZone/GameZone";
 import { useEffect, useState } from "react";
 import CompleteModal from "../components/main/CompleteModal/CompleteModal";
-import { useMemoryGame } from "../hooks";
+import { useCardList, useMemoryGame } from "../hooks";
 import { LEVEL } from "../constants";
+import { getRandomList } from "../utils/random";
 
 const Main = () => {
-  const [difficulty, setDifficulty] = useState("easy");
+  const [difficulty, setDifficulty] = useState("easy"); // 난이도
 
-  const {
-    successCount,
-    isRestarted,
-    handleCorrect,
-    handleReset,
-    handleRestart,
-  } = useMemoryGame(difficulty);
+  const { isRestarted, handleRestarted } = useMemoryGame(difficulty); // 리스타팅(or reset)을 위한 게임 메모리
+  const { cardState, setCardState, handleCardClick } = useCardList(difficulty); // 카드게임 리스트 관련 data, handler
 
-  const isDone = successCount === LEVEL[difficulty.toUpperCase()].QUIZ_COUNT;
+  const isDone = !cardState.some((card) => !card.matched);
+  const successCount = Math.floor(
+    cardState.filter((card) => card.matched).length / 2
+  );
 
-  useEffect(() => {
-    handleReset();
-  }, [difficulty]);
+  if (isRestarted) {
+    setCardState(getRandomList(LEVEL[difficulty.toUpperCase()].QUIZ_COUNT));
+    handleRestarted();
+  }
 
   return (
     <main>
       <CountBanner
-        onReset={handleRestart}
+        onReset={handleRestarted}
         currentCount={successCount}
         level={difficulty}
       />
       <LevelSelector onChangeLevel={setDifficulty} level={difficulty} />
-      <GameZone
-        level={difficulty}
-        onCorrect={handleCorrect}
-        isRestarted={isRestarted}
-        onRestart={handleRestart}
-      />
-      <CompleteModal
-        isDone={isDone}
-        onReset={handleReset}
-        onRestart={handleRestart}
-      />
+      <GameZone onFlip={handleCardClick} cardList={cardState} />
+      <CompleteModal isDone={isDone} onRestart={handleRestarted} />
     </main>
   );
 };
