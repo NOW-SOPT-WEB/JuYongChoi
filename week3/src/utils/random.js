@@ -28,7 +28,6 @@ export const getRandomList = (count) => {
 
   return numList.map((num, idx) => {
     const card = CARD_LIST.find((card) => card.id === num);
-    console.log(card);
     return {
       ...card,
       id: idx,
