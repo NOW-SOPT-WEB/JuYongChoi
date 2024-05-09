@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactElement, ReactNode } from "react";
+import { ComponentPropsWithRef, ReactNode } from "react";
 
 import {
   buttonStyle,
@@ -11,22 +11,27 @@ import { SizeType } from "@/types/size";
 export interface IButton extends ComponentPropsWithRef<"button"> {
   variant?: "primary" | "secondary" | "outline" | "default";
   size?: Extract<SizeType, "xLarge" | "large" | "medium" | "small">;
-  icon?: ReactElement;
   children: ReactNode;
 }
 
 const Button = ({
   variant = "default",
   size = "medium",
-  icon,
   ...props
 }: IButton) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    const { key } = e;
+    if (key === "Enter") {
+      props?.onClick;
+    }
+  };
   return (
     <button
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
       {...props}
       css={[buttonStyle, variantStyle[variant], sizeStyle[size]]}
     >
-      {icon}
       {props.children}
     </button>
   );
