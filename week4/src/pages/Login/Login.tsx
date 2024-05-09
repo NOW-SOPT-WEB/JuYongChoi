@@ -2,17 +2,17 @@ import Box from "@components/common/Box/Box";
 import Button from "@components/common/Button/Button";
 import Flex from "@components/common/Flex/Flex";
 import Heading from "@components/common/Heading/Heading";
-import Img from "@components/common/Img/Img";
 import Input from "@components/common/Input/Input";
 import { Theme } from "@/styles/theme";
 import { useNavigate } from "react-router-dom";
-import img from "@assets/img.jpeg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { postLogin } from "@/api";
 import axios from "axios";
 import { HTTP_STATUS_CODE } from "@constants/api";
 import { UserDataType } from "@/types/api";
 import { URL_MAP } from "@constants/url";
+import loginImg from "@assets/img.jpeg";
+import Img from "@/components/common/Img/Img";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -21,12 +21,14 @@ const LoginPage = () => {
     navigate(URL_MAP.SIGNUP);
   };
 
-  const { register, handleSubmit } =
+  const { register, handleSubmit, watch } =
     useForm<Omit<UserDataType, "nickname" | "phone">>();
 
   const onSubmit: SubmitHandler<
     Omit<UserDataType, "nickname" | "phone">
   > = async (data) => {
+    if (!data.authenticationId || !data.password) return;
+
     try {
       const { headers } = await postLogin(data);
 
@@ -69,12 +71,24 @@ const LoginPage = () => {
         }}
       >
         <Heading size="xxLarge">Login</Heading>
-        <Img src={img} shape="rectangle" width="80%" height="160px" />
-
-        <Input {...register("authenticationId")} size="large" label="ID" />
-        <Input {...register("password")} size="large" label="PW" />
-
-        <Flex styles={{ gap: Theme.spacing.spacing4 }}>
+        <Img src={loginImg} width="260px" height="260px" shape="circle" />
+        <Input
+          {...register("authenticationId")}
+          size="large"
+          label="ID"
+          supportingText={
+            !watch("authenticationId") ? "아이디는 필수입니다." : undefined
+          }
+        />
+        <Input
+          {...register("password")}
+          size="large"
+          label="PW"
+          supportingText={
+            !watch("password") ? "비밀번호는 필수입니다." : undefined
+          }
+        />
+        <Flex styles={{ gap: Theme.spacing.spacing4, marginTop: "12px" }}>
           <Button variant="primary" type="submit">
             로그인
           </Button>
