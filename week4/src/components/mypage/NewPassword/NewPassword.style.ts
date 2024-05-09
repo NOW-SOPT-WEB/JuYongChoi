@@ -6,7 +6,7 @@ export const formStyle = css({
   gap: "12px",
 
   width: "100%",
-  height: "320px",
+  height: "360px",
 
   "& > div": {
     width: "60%",

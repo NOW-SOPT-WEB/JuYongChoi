@@ -25,7 +25,12 @@ const NewPassword = ({ isOpen, onSelectClick }: NewPasswordProps) => {
   const { register, handleSubmit, reset } = useForm<ChangePwdType>();
 
   const onSubmit: SubmitHandler<ChangePwdType> = async (data) => {
-    console.log(data);
+    if (
+      !data.newPassword ||
+      !data.newPasswordVerification ||
+      !data.previousPassword
+    )
+      return;
     try {
       const response = await patchPassword(data);
       alert(response.message);
@@ -74,7 +79,7 @@ const NewPassword = ({ isOpen, onSelectClick }: NewPasswordProps) => {
           <Button type="submit">비밀번호 변경</Button>
         </Flex>
       ) : (
-        <Box styles={{ height: "320px" }}></Box>
+        <Box styles={{ height: "360px" }}></Box>
       )}
     </Flex>
   );
