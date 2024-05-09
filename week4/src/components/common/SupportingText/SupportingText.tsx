@@ -1,12 +1,12 @@
 import { getTextStyle } from "./SupportingText.style";
 
 export interface SupportingTextProps
-  extends React.HTMLAttributes<HTMLSpanElement> {
+  extends React.HTMLAttributes<HTMLParagraphElement> {
   isError?: boolean;
 }
 
 const SupportingText = ({ isError = false, children }: SupportingTextProps) => {
-  return <span css={getTextStyle(isError)}>{children}</span>;
+  return <p css={getTextStyle(isError)}>{children}</p>;
 };
 
 export default SupportingText;

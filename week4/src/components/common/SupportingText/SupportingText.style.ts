@@ -13,4 +13,6 @@ export const getTextStyle = (
 
     color: isError ? Theme.color.red300 : Theme.color.gray600,
     fontWeight: 600,
+
+    minHeight: Theme.text.xSmall.lineHeight,
   });
