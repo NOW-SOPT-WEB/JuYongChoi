@@ -27,11 +27,9 @@ export const inputWrapperStyle = (isError: Required<InputProps>["isError"]) =>
 
     transition: "all .2s ease-in",
 
-    "&:focus-within": {
-      boxShadow: isError
-        ? `inset 0 0 0 1.5px ${Theme.color.red100}`
-        : `inset 0 0 0 1.5px ${Theme.color.gray300}`,
-    },
+    boxShadow: isError
+      ? `inset 0 0 0 1.5px ${Theme.color.red200}`
+      : `inset 0 0 0 1.5px ${Theme.color.gray300}`,
   });
 
 export const sizeStyle = {

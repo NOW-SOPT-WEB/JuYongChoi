@@ -28,9 +28,7 @@ const Input = (
       <div css={[inputWrapperStyle(isError)]}>
         <input ref={ref} css={[inputStyle, sizeStyle[size]]} {...props} />
       </div>
-      {supportingText && (
-        <SupportingText isError={isError}>{supportingText}</SupportingText>
-      )}
+      <SupportingText isError={isError}>{supportingText}</SupportingText>
     </div>
   );
 };
