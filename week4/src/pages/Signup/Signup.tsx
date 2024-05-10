@@ -1,4 +1,10 @@
 import { postSignUp } from "@/api";
+import SignUpForm from "@/components/Signup/SignupForm";
+import { HTTP_STATUS_CODE } from "@/constants/api";
+import { GUIDE_MESSAGE } from "@/constants/message";
+import { URL_MAP } from "@/constants/url";
+import { UserDataType } from "@/types/api";
+import { checkPasswordValidation } from "@/utils";
 import Box from "@components/common/Box/Box";
 import Flex from "@components/common/Flex/Flex";
 import Heading from "@components/common/Heading/Heading";
@@ -6,12 +12,6 @@ import { Theme } from "@styles/theme";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { UserDataType } from "@/types/api";
-import { HTTP_STATUS_CODE } from "@/constants/api";
-import { URL_MAP } from "@/constants/url";
-import { GUIDE_MESSAGE } from "@/constants/message";
-import SignUpForm from "@/components/Signup/SignupForm";
-import { checkPasswordValidation } from "@/utils";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
