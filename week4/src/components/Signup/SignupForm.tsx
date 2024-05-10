@@ -1,15 +1,15 @@
+import { GUIDE_MESSAGE } from "@/constants/message";
 import { UserDataType } from "@/types/api";
+import { FormEvent, HTMLAttributes, useEffect, useState } from "react";
 import {
   UseFormRegister,
   UseFormSetFocus,
   UseFormWatch,
 } from "react-hook-form";
+import Button from "../common/Button/Button";
+import Flex from "../common/Flex/Flex";
 import Input from "../common/Input/Input";
 import { formStyle } from "./Signup.style";
-import { GUIDE_MESSAGE } from "@/constants/message";
-import { FormEvent, HTMLAttributes, useEffect, useState } from "react";
-import Flex from "../common/Flex/Flex";
-import Button from "../common/Button/Button";
 
 interface SignUpFormProps
   extends Omit<HTMLAttributes<HTMLFormElement>, "onFocus"> {
@@ -18,6 +18,8 @@ interface SignUpFormProps
   onGoBack: () => void;
   onFocus: UseFormSetFocus<UserDataType>;
 }
+
+type formType = "authenticationId" | "password" | "nickname" | "phone";
 
 const SignUpForm = ({
   register,
@@ -28,6 +30,7 @@ const SignUpForm = ({
 }: SignUpFormProps) => {
   const [phoneNum, setPhoneNum] = useState("");
   const { ref, name, onChange } = register("phone");
+  const [errorInput, setErrorInput] = useState<formType>();
 
   /** 전화번호 '-' 자동완성 */
   useEffect(() => {
@@ -37,49 +40,50 @@ const SignUpForm = ({
   }, [phoneNum]);
 
   /** 빈 Input 요소 onFocus */
-  const handleEmptyInputFocus = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const watchList: formType[] = [
+      "authenticationId",
+      "password",
+      "nickname",
+      "phone",
+    ];
+    let isError = false;
 
-    if (!onWatch("authenticationId")) {
-      onFocus("authenticationId");
-      return;
-    }
-    if (!onWatch("password")) {
-      onFocus("password");
-      return;
-    }
-    if (!onWatch("nickname")) {
-      onFocus("nickname");
-      return;
-    }
-    if (!onWatch("phone")) {
-      onFocus("phone");
-      return;
-    }
+    watchList.forEach((data) => {
+      if (!onWatch(data) && !isError) {
+        setErrorInput(data);
+        onFocus(data);
+        isError = true;
+        return;
+      }
+    });
 
     onSubmit?.(e);
   };
 
   return (
-    <form css={formStyle} onSubmit={handleEmptyInputFocus}>
+    <form css={formStyle} onSubmit={handleSubmit}>
       <Input
         {...register("authenticationId")}
         size="large"
         label="ID"
-        isError={!!!onWatch("authenticationId")}
+        isError={
+          !onWatch("authenticationId") && errorInput === "authenticationId"
+        }
       />
       <Input
         supportingText={GUIDE_MESSAGE.PASSWORD}
         {...register("password")}
         size="large"
         label="비밀번호"
-        isError={!!!onWatch("password")}
+        isError={!onWatch("password") && errorInput === "password"}
       />
       <Input
         {...register("nickname")}
         size="large"
         label="닉네임"
-        isError={!!!onWatch("nickname")}
+        isError={!onWatch("nickname") && errorInput === "nickname"}
       />
       <Input
         ref={ref}
@@ -91,7 +95,7 @@ const SignUpForm = ({
         }}
         size="large"
         label="전화번호"
-        isError={!!!onWatch("phone")}
+        isError={!onWatch("phone") && errorInput === "phone"}
         supportingText={GUIDE_MESSAGE.PHONENUM}
       />
       <Flex styles={{ justify: "center", gap: "16px", marginTop: "10px" }}>
