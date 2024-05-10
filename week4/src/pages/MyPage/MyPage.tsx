@@ -1,16 +1,16 @@
-import Box from "@components/common/Box/Box";
-import Button from "@components/common/Button/Button";
-import Flex from "@components/common/Flex/Flex";
-import Heading from "@components/common/Heading/Heading";
-import InfoRow from "@/components/Mypage/InfoRow/InfoRow";
-import InfoTable from "@/components/Mypage/InfoTable/InfoTable";
-import { Theme } from "@/styles/theme";
-import { useNavigate, useParams } from "react-router-dom";
-import NewPassword from "@/components/Mypage/NewPassword/NewPassword";
-import { useOverlay } from "@/hooks/useOverlay";
 import { getMemberInfo } from "@/api";
-import { useEffect, useState } from "react";
+import Box from "@/components/common/Box/Box";
+import Button from "@/components/common/Button/Button";
+import Flex from "@/components/common/Flex/Flex";
+import Heading from "@/components/common/Heading/Heading";
+import InfoRow from "@/components/mypage/InfoRow/InfoRow";
+import InfoTable from "@/components/mypage/InfoTable/InfoTable";
+import NewPassword from "@/components/mypage/NewPassword/NewPassword";
+import { useOverlay } from "@/hooks/useOverlay";
+import { Theme } from "@/styles/theme";
 import { UserDataType } from "@/types/api";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MyPage = () => {
   const navigate = useNavigate();
