@@ -1,18 +1,18 @@
+import { postLogin } from "@/api";
+import Img from "@/components/common/Img/Img";
+import { Theme } from "@/styles/theme";
+import { UserDataType } from "@/types/api";
+import loginImg from "@assets/img.jpeg";
 import Box from "@components/common/Box/Box";
 import Button from "@components/common/Button/Button";
 import Flex from "@components/common/Flex/Flex";
 import Heading from "@components/common/Heading/Heading";
 import Input from "@components/common/Input/Input";
-import { Theme } from "@/styles/theme";
-import { useNavigate } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { postLogin } from "@/api";
-import axios from "axios";
 import { HTTP_STATUS_CODE } from "@constants/api";
-import { UserDataType } from "@/types/api";
 import { URL_MAP } from "@constants/url";
-import loginImg from "@assets/img.jpeg";
-import Img from "@/components/common/Img/Img";
+import axios from "axios";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -21,8 +21,12 @@ const LoginPage = () => {
     navigate(URL_MAP.SIGNUP);
   };
 
-  const { register, handleSubmit, watch } =
-    useForm<Omit<UserDataType, "nickname" | "phone">>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { isSubmitted },
+  } = useForm<Omit<UserDataType, "nickname" | "phone">>();
 
   const onSubmit: SubmitHandler<
     Omit<UserDataType, "nickname" | "phone">
@@ -77,7 +81,9 @@ const LoginPage = () => {
           size="large"
           label="ID"
           supportingText={
-            !watch("authenticationId") ? "아이디는 필수입니다." : undefined
+            !watch("authenticationId") && isSubmitted
+              ? "아이디는 필수입니다."
+              : undefined
           }
         />
         <Input
@@ -85,7 +91,9 @@ const LoginPage = () => {
           size="large"
           label="PW"
           supportingText={
-            !watch("password") ? "비밀번호는 필수입니다." : undefined
+            !watch("password") && isSubmitted
+              ? "비밀번호는 필수입니다."
+              : undefined
           }
         />
         <Flex styles={{ gap: Theme.spacing.spacing4, marginTop: "12px" }}>
